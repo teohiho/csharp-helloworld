@@ -1,0 +1,104 @@
+﻿@model IEnumerable<helloWorld.Models.Customer>
+@{
+    ViewBag.Title = "Customer";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@*<a class="btn btn-default" style="margin-bottom:10px" onclick="PopupForm('@Url.Action("Create","Customers")')">+ Add</a>*@
+
+<p>
+    @Html.ActionLink("+ Add", "Create")
+</p>
+
+<table id="customerTable" class="table table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Functions</td>
+        </tr>
+        @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>
+                        @customer.Name
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = customer.Id })    |
+                        @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+                    </td>
+                    
+                </tr>
+            }
+    </thead>
+</table>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+@section scripts{
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+
+    <script>
+       /* var Popup, dataTable;
+        $(document).ready(function () {
+            dataTable = $("customerTable").Datatable({
+                "ajax": {
+                    "url": "/Customers/GetData",
+                    "type": "GET",
+                    "datatyle": "json"
+                },
+                "columns": [
+                    { "data": "Name" },
+                ],
+                "language": {
+                    "emptyTable": "No data found, Please click on Add new Button",
+                }
+
+            })
+        })
+        function PopupForm(url) {
+            var formDiv = $('<div />');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: "Fill Customer Details",
+                        height: 500,
+                        width: 700,
+                        close: function () {
+                            Popup.dialog('destroy').remove();
+                        }
+
+                    })
+                });
+        }
+        function SubmitForm(form) {
+            $.ajax({
+                type: "POST",
+                url: form.action,
+                data: $(form).serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        Popup.dialog('close');
+                        dataTable.ajax.reload();
+                    }
+                }
+            });
+            return false;
+        }*/
+    </script>
+}
+
+
+
+
+
+

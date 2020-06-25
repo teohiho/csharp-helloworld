@@ -1,18 +1,41 @@
-﻿@model helloWorld.ViewModels.RandomMovieViewModel
-@{
-    ViewBag.Title = "Random";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>@Model.Movie.Name</h2>
-<table border="1" cellpadding="6">
-    @for (int i = 0; i < Model.Customers.Count; i++)
-    {
-        <tr>
-            <td>@Model.Customers[i].Name</td>
-        </tr>
+﻿@*
+    @model helloWorld.ViewModels.RandomMovieViewModel
+    @{
+        ViewBag.Title = "Random";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
-</table>
+
+    @{
+        var className = Model.Customers.Count > 0 ? "popular" : null;
+    }
+
+    <h2 class="@className">@Model.Movie.Name</h2>
+
+
+    @if (Model.Customers.Count == 0)
+    {
+        <text>No one has rented this movie before.</text>
+    }
+    else
+    {
+        <ul>
+            @foreach (var cutomer in Model.Customers)
+            {
+                <li>@cutomer.Name</li>
+            }
+        </ul>
+    }
 
 
 
+    <table border="1" cellpadding="6">
+        @for (int i = 0; i < Model.Customers.Count; i++)
+        {
+            <tr>
+                <td>@Model.Customers[i].Name</td>
+            </tr>
+        }
+    </table>
+
+
+*@

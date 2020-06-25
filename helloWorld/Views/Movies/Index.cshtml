@@ -1,0 +1,21 @@
+﻿@model IEnumerable<helloWorld.Models.Movie>
+@{
+    ViewBag.Title = "Movies";
+}
+
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Movies</p>
+
+
+<ul>
+    @foreach (var movie in Model)
+    {
+        <li>@movie.Name</li>
+    }
+</ul>
+
+
+
